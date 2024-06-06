@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Position</title>
+    <link rel="icon" href="/static/download.png">
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+
+
+<body>
+    <main class="container">
+         <header>
+
+
+            <div class="Logo">
+                Kynix
+            </div>
+
+            <div >
+                <form action="" class="search-bar">
+                    <input type="text" placeholder="Search">
+                    <button type="submit"><img class= search-icon src="/static/1000_F_278600482_jMaMwEXPoMx5QYdlHN6AK5We5L9wIEJs_1_-removebg-preview.png"></button>
+                </form>
+                </div>
+
+            <div class="profileBorder">
+
+               <img class="user-icon" src="/static/download.png">
+
+            </div>
+            
+
+         </header>
+
+
+    </main>
+
+    <div class="product-hub">
+       
+
+        
+        <div class=Section-title> 
+           Trending 🔥
+        </div>
+
+        
+        <div class="product-carousel">
+
+            {{range .Products}}
+            <div class="Product-Box">
+                
+                <div class="Product-Img"> <img class="product-cover" src={{.Imgurl}}> </div>
+
+                <div class="Product-Info"> {{.Title}} </div>
+ 
+            </div>
+            {{end}}
+
+            <div>  
+                <button class=slide-button type="submit"><img class=slide-button-icon src="/static/removed.png"></button>
+            </div>
+
+        </div>
+        
+
+        <br>
+
+
+        {{range .Product}}
+        <div class=Section-title> 
+            {{.Header1}}
+        </div>
+
+        <div class="product-carousel">
+
+            
+            <div class="Product-Box">
+                <div class="Product-Img"> <img class="product-cover" src="{{.img}}"> </div>
+                <div class="Product-Info"> {{.desc}} </div>
+            </div>
+            
+            <div>  
+                <button type="submit"><img class=slide-button src="/static/removed.png"></button>
+            </div>
+        </div>
+        {{end}}
+
+        <br>
+
+        <div class=Section-title> 
+                Product Title 
+        </div>
+        <div class="product-carousel">
+
+            <div class="Product-Box">
+                <div class="Product-Img"> <img class="product-cover" src="C:\Users\User\Desktop\Code\GOTH_STACK\static\clrs.jpg"> </div>
+                <div class="Product-Info"> img </div>
+            </div>
+
+            <div>  
+                <button type="submit"><img class=slide-button src="C:\Users\User\Desktop\Code\GOTH_STACK\static\removed.png"></button>
+            </div>
+            
+        </div>
+
+        <br>
+
+        <div class=Section-title> 
+            Product Title 
+        </div>
+        <div class="product-carousel">
+
+            <div class="Product-Box">
+                <div class="Product-Img"> <img class="product-cover" src="clrs.jpg"> </div>
+                <div class="Product-Info"> img </div>
+
+            </div>
+           
+            <div>  
+                <button type="submit"><img class=slide-button src="C:\Users\User\Desktop\Code\GOTH_STACK\static\removed.png"></button>
+            </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+ </body>
+
+
+</html>
