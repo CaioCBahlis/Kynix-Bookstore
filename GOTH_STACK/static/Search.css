@@ -43,6 +43,7 @@ header{
     font-size: 2.5rem;
     margin-left: 20px;
     align-self: center;
+    cursor: pointer;
     
 }
 
@@ -110,126 +111,19 @@ hr{
 }
 
 body{
-    display: inline;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(to right, rgb(34, 40, 49), rgb(118, 171, 174));
 }
 
-.carousel-slide{
-    width: 50px;
-    height: 50px;
-    
-    border-radius: 50%;
-}
 
-.categories{
+.Results-Display{
     height: 100%;
-    width: 20%;
-    margin-top: 7rem ;
-
+    width: 70%;
+    margin-left: 30%;
+    margin-top: 7rem;
     border-color: black;
     border: solid;
     border-width: 2px;
+    overflow: hidden;
 }
-
-.Page-Content{
-    display: inline;
-
-}
-
-.product-hub{
-    position: absolute;
-    right:0;
-    top: 12rem;
-    
-    height: 100%;
-    width: 75%;
-    
-    
-    
-    
-    border: solid;
-    border-width: 2px;
-}
-
-.product-carousel{
-    width: 100%;
-    height: 20rem;
-    border-color:transparent;
-    border: solid;
-    border-width: 2px 2px 2px 2px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.Product-Box{
-    width: 11rem;
-    height: 16rem;
-    margin: 60px;
-    position: relative;
-    bottom: 1.5rem;
-    scroll-snap-align: start;
-    
-    
-}
-
-
-.Product-Img{
-    width: 100%;
-    height: 80%;
-    
-}
-
-.product-cover{
-    width: 100%;
-    height: 100%;
-    border-radius: 20px 20px 0px 0px;
-}
-
-.Product-Info{
-    width: 100%;
-    height: 20%;
-    background-color: cadetblue;
-    border-radius: 0px 0px 10px 10px;
-    padding-left: 5px;
-
-}
-
-.slide-button-icon{
-    width: 50px;
-    height: 50px;
-    right: 0;
-    margin-bottom: 2rem;
-    cursor: pointer;
-    border: none;
-    background: none;
-    
-}
-
-.slide-button{
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
-    border-color: transparent;
-    border: transparent;
-    margin-bottom: 2rem;
-}
-
-.Section-title{
-    
-    width: 100%;
-    margin-bottom: 2rem;
-    position: relative;
-    font-size: 4rem;
-    font-family: "Fira Sans";
-    font: bold;
-}
-
-
-br {
-    display: block;
-    margin: 5px 0;
- }
