@@ -42,21 +42,22 @@
     <div class="product-hub">
        
 
-        
+        {{range .Sections}}
+
         <div class=Section-title> 
-           Trending 🔥
+           {{.Section_Title}}
         </div>
 
-        
-        <div class="product-carousel">
 
+        <div class="product-carousel">
             {{range .Products}}
+            
             <div class="Product-Box">
                 
                 <div class="Product-Img"> <img class="product-cover" src={{.Imgurl}}> </div>
 
                 <div class="Product-Info"> {{.Title}} </div>
- 
+            
             </div>
             {{end}}
 
@@ -65,14 +66,16 @@
             </div>
 
         </div>
+
+        {{end}}
         
 
         <br>
 
 
-        {{range .Product}}
+        
         <div class=Section-title> 
-            {{.Header1}}
+            
         </div>
 
         <div class="product-carousel">
@@ -87,7 +90,7 @@
                 <button type="submit"><img class=slide-button src="/static/removed.png"></button>
             </div>
         </div>
-        {{end}}
+        
 
         <br>
 

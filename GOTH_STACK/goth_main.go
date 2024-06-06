@@ -2,6 +2,7 @@ package main
 
 import (
 	"GOTH_STACK/MyDatabase"
+	"database/sql"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -10,12 +11,18 @@ import (
 
 
 
-type data struct {
-	Title  string
-	Products []MyDatabase.Product
+type Data struct {
+	Sections []Section
 }
 
-var MyData data
+type Section struct{
+	Section_Title string
+	Products []MyDatabase.Product
+
+}
+
+var MyData Data
+var PageSection Section
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	
@@ -36,11 +43,33 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 
 func main() {
-	db := MyDatabase.OpenConn()
-	rows, _ := MyDatabase.DB_Search_and_Update(db, "esgrima")
 
-	MyData = data{
-		Title: "MyTitle",
+	MyData = Data{
+		Sections: []Section{},
+	}
+
+	db := MyDatabase.OpenConn()
+	Generate_Row(db, "esgrima", "Birds Of A Feather")
+	Generate_Row(db, "esgrima", "Mitski")
+	Generate_Row(db, "esgrima", "Compiladores")
+
+	
+	
+
+	http.HandleFunc("/", handler)
+	staticPath := "C:/Users/User/Desktop/Code/GOTH_STACK/static"
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir(staticPath))))
+	http.ListenAndServe(":8102", nil)
+}
+
+
+func Generate_Row(db *sql.DB, SearchProduct string, RowTitle string){
+
+	rows, _ := MyDatabase.DB_Search_and_Update(db, SearchProduct)
+
+	
+	PageSection = Section{
+		Section_Title: RowTitle,
 		Products: []MyDatabase.Product{},
 	}
 	
@@ -53,13 +82,9 @@ func main() {
 				continue
 		}
 
-		MyData.Products = append(MyData.Products, p)
+		PageSection.Products = append(PageSection.Products, p)
+		
 	  }
-	
-	
-
-	http.HandleFunc("/", handler)
-	staticPath := "C:/Users/User/Desktop/Code/GOTH_STACK/static"
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir(staticPath))))
-	http.ListenAndServe(":8102", nil)
+	  MyData.Sections = append(MyData.Sections, PageSection)
+	  
 }
