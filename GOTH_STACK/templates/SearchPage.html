@@ -13,12 +13,12 @@
 
 <body>
 
-    <main class="container">
+    <main>
         
         <header>
 
-           <div href=myhtml.html class="Logo">
-               Kynix
+           <div class="Logo">
+               <a href="myhtml.html"> Kynix </a>
            </div>
 
            <div >
@@ -36,16 +36,35 @@
            
         </header>
 
+        <hr>
    </main>
     
-   <div class="Results-Display">
+   
 
-    rap snitches
+    
+    <div class="product-hub">
+            
+        {{range .Sections}}
+            {{range .}}
+        <div class="Product-Row"> 
 
+        {{range .Products}}
+           
+            <div class="Product-Box">
+                <a href="{{.Purl}}">
+                <div class="Product-Image"> <img src="{{.Imgurl}}"> </div>
+                <div class="Product-Info">
+                    <div> {{.Title}} {{.Price}}</div>
+                </div> 
+                </a>
+            </div>
+          
+            {{end}}
+            
+        </div>
+        {{end}}
+        {{end}}
+    </div>
 
-
-
-
-   </div>
-
+    
 </body>

@@ -12,12 +12,13 @@
 
 
 <body>
+
     <main class="container">
          <header>
 
 
             <div href=myhtml.html class="Logo">
-                Kynix
+                <a href="myhtml.html"> Kynix </a>
             </div>
 
             <div >
@@ -35,30 +36,79 @@
             
 
          </header>
-
-
+ 
+    <hr>
     </main>
 
+   
+
     <div class="Page-Content">
-        
-        <div class="categories">
-            <br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br>
+
+       <div class=Menu-Bar>
+            <br><br><br><br><br><br><br><br><br><br><br>    
+       </div>
+
+       <div class="Sliding-Hub">
+            <div class="slider-container">
+                <div class="slider-content">
+                    <div class="slide">
+                        <img src="/static/23437212_6795197 (1).jpg" alt="Image 1">
+                    </div>
+                    <div class="slide">
+                        <img src="/static/31256455_7773487.jpg" alt="Image 2">
+                    </div>
+                    <div class="slide">
+                        <img src="/static/32452243_7929097.jpg" alt="Image 2">
+                    </div>
+                </div>
+            </div>
+       </div>
+
+       <div class="Category-Elements">
+
+        <div class="Section-Icon"> 
+            <a href="myhtml.html">
+            <img src="/static/spaceship.png"> 
+            <p class="Section-Icon-Title"> Fiction </p> 
+            </a>
         </div>
 
-        <div class="product-hub">
-        
+        <div class="Section-Icon"> 
+            <a href="myhtml.html">
+            <img src="/static/discount.png"> 
+            <p class="Section-Icon-Title"> Sale </p> 
+            </a>
+        </div>
 
+        <div class="Section-Icon"> 
+            <a href="myhtml.html">
+            <img src="/static/exclusive.png"> 
+            <p class="Section-Icon-Title"> Best-Sellers </p> 
+            </a>
+        </div>
+        <div class="Section-Icon"> 
+            <a href="myhtml.html">
+            <img src="/static/new.png"> 
+            <p class="Section-Icon-Title"> New Releases </p> 
+            </a>
+        </div>
+
+        <div class="Section-Icon"> 
+            <a href="myhtml.html">
+            <img src="/static/tik-tok.png"> 
+            <p class="Section-Icon-Title"> BookTok </p> 
+            </a>
+        </div>
+
+       </div>
+
+        <div class="product-hub">
             {{range .Sections}}
-            
+                {{range .}}
             <div class=Section-title> 
+            
             {{.Section_Title}}
             </div>
-
 
             <div class="product-carousel">
 
@@ -78,7 +128,7 @@
 
             </div>
             {{end}}
-            
+            {{end}}
         </div>
     </div>
 

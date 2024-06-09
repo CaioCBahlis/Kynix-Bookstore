@@ -8,228 +8,270 @@
   box-sizing: border-box;
 }
 
-
-
-header{
-
-    width: 100%;
-    height: 5rem;
-    background: linear-gradient(to right, rgb(34, 40, 49), rgb(118, 171, 174));
-    position: sticky;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+header {
+  width: 100%;
+  height: 5rem;
+  background-color: #fca311;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-
-.profileBorder{
-    border: 1rem;
-    width: 2rem;
-    height: 3rem;
-    border: double;
-    border-radius: 2.5rem;
-    margin-right: 2rem;
-    border-color: rgb(118, 171, 174);
-
-    
-    right: 0;
-    
+main {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
-.Logo{
-    font-family: "Orbitron";
-    color: rgb(118, 171, 174);
-    font-size: 2.5rem;
-    margin-left: 20px;
-    align-self: center;
-    
+.profileBorder {
+
+  border-radius: 70%;
+  margin-right: 2rem;
+  right: 0;
 }
 
-.search-bar{
-    margin-top: 20px;
-    width: 30em;
-    height: 2.7rem;
-    background-color: hsla(182, 19%, 28%, 0.705);
-    border: solid;
-    border-radius: 2rem;
-    border-color: hsla(195, 17%, 5%, 0.705);
-    border-width: 0.10rem;
-    display: flex;
-    justify-self: start;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: #ffffff;
-    font-family: "Montserrat";
-    backdrop-filter: blur(4px) saturate(180%);
+a {
+  color: rgb(118, 171, 174);
+  text-decoration: none;
 }
 
-.search-bar input{
-    background: transparent;
-    border: 0;
-    outline: 0;
-    color: wheat;
+.Logo {
+  font-family: "Orbitron";
+  color: rgb(118, 171, 174);
+  font-size: 2.5rem;
+  margin-left: 20px;
 }
 
-.search-bar button img{
-    width: 2.5rem;
-    height: 2.5rem;
-    display: flex;
-    margin-right: 3rem;
-    position: relative;
-    bottom: 4px;
-    right: 4px;
-
-    
-
+.search-bar {
+  margin-top: 20px;
+  width: 30em;
+  height: 2.7rem;
+  background-color: #c57b03;
+  border: solid;
+  border-radius: 2rem;
+  border-color: hsla(195, 17%, 5%, 0.705);
+  border-width: 0.10rem;
+  display: flex;
+  justify-self: start;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #ffffff;
+  font-family: "Montserrat";
+  backdrop-filter: blur(4px) saturate(180%);
 }
 
-.search-bar button{
-    border: 0;
-    border-radius: 50%;
-    width: 33px;
-    height: 33px;
-    background-color: rgba(164, 241, 245, 0.74);
-    cursor: pointer;
-    
+.search-bar input {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: white;
 }
 
-.user-icon{
-    width: 3rem;
-    height: 3rem;
-    border-radius: 2rem;
+.search-bar button img {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  margin-right: 3rem;
+  position: relative;
+  bottom: 4px;
+  right: 4px;
 }
 
-hr{
-    width: 100%;
-    height: 1px;
-    background-color:  rgb(238, 238, 238);
-
+.search-bar button {
+  border: 0;
+  border-radius: 50%;
+  width: 33px;
+  height: 33px;
+  background-color: rgba(164, 241, 245, 0.74);
+  cursor: pointer;
 }
 
-body{
-    display: inline;
-    background: linear-gradient(to right, rgb(34, 40, 49), rgb(118, 171, 174));
+.user-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 2rem;
 }
 
-.carousel-slide{
-    width: 50px;
-    height: 50px;
-    
-    border-radius: 50%;
+hr {
+  width: 100%;
+  height: 1px;
+  background-color: rgb(0, 0, 0);
 }
 
-.categories{
-    height: 100%;
-    width: 20%;
-    margin-top: 7rem ;
-
-    border-color: black;
-    border: solid;
-    border-width: 2px;
+body {
+  display: inline;
+  background-color: #14213d;
 }
 
-.Page-Content{
-    display: inline;
-
+.carousel-slide {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
-.product-hub{
-    position: absolute;
-    right:0;
-    top: 12rem;
-    
-    height: 100%;
-    width: 75%;
-    
-    
-    
-    
-    border: solid;
-    border-width: 2px;
+.Page-Content {
+  height: 80%;
+  display: inline;
 }
 
-.product-carousel{
-    width: 100%;
-    height: 20rem;
-    border-color:transparent;
-    border: solid;
-    border-width: 2px 2px 2px 2px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-
+.product-hub {
+  display: grid;
+  place-items: center;
+  margin: auto;
+  height: 100%;
+  width: 75%;
 }
 
-.Product-Box{
-    width: 11rem;
-    height: 16rem;
-    margin: 60px;
-    position: relative;
-    bottom: 1.5rem;
-    scroll-snap-align: start;
-    
-    
+.product-carousel {
+  width: 100%;
+  height: 20rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #0a1227;
 }
 
-
-.Product-Img{
-    width: 100%;
-    height: 80%;
-    
+.Product-Box {
+  width: 11rem;
+  height: 16rem;
+  margin-left: 60px;
+  margin-right: 60px;
+  position: relative;
+  scroll-snap-align: start;
 }
 
-.product-cover{
-    width: 100%;
-    height: 100%;
-    border-radius: 20px 20px 0px 0px;
+.Product-Img {
+  display: absolute;
+  width: 100%;
+  height: 80%;
 }
 
-.Product-Info{
-    width: 100%;
-    height: 20%;
-    background-color: cadetblue;
-    border-radius: 0px 0px 10px 10px;
-    padding-left: 5px;
-
+.product-cover {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px 20px 0 0;
 }
 
-.slide-button-icon{
-    width: 50px;
-    height: 50px;
-    right: 0;
-    margin-bottom: 2rem;
-    cursor: pointer;
-    border: none;
-    background: none;
-    
+.Product-Info {
+  width: 100%;
+  height: 20%;
+  background-color: cadetblue;
+  border-radius: 0 0 10px 10px;
+  padding-left: 5px;
 }
 
-.slide-button{
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
-    border-color: transparent;
-    border: transparent;
-    margin-bottom: 2rem;
+.slide-button-icon {
+  width: 50px;
+  height: 50px;
+  right: 0;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  border: none;
+  background: none;
 }
 
-.Section-title{
-    
-    width: 100%;
-    margin-bottom: 2rem;
-    position: relative;
-    font-size: 4rem;
-    font-family: "Fira Sans";
-    font: bold;
+.slide-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  border: transparent;
+  margin-bottom: 2rem;
 }
 
+.Section-title {
+  width: 100%;
+  margin-top: 2rem;
+  position: relative;
+  font-size: 4rem;
+  font-family: "Fira Sans";
+}
 
 br {
-    display: block;
-    margin: 5px 0;
- }
+  display: block;
+  margin: 5px 0;
+}
+
+.Menu-Bar {
+  width: 100%;
+  max-height: 50px;
+  background-color: rgb(255, 252, 252);
+}
+
+.Sliding-Hub {
+  min-width: 7rem;
+  max-height: 550px;
+  margin-top: 5rem;
+  border: 2%;
+  border: solid;
+  border-color: black;
+  overflow: hidden;
+}
+
+.slide {
+  flex: 0 0 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 550px;
+}
+
+.slider-content {
+  display: flex;
+  animation: slide 10s infinite ease-in-out;
+}
+
+@keyframes slide {
+  0%, 30%, 100% {
+    transform: translateX(0);
+  }
+  40%, 60% {
+    transform: translateX(-100%);
+  }
+  70%, 90% {
+    transform: translateX(-200%);
+  }
+}
+
+.Category-Elements{
+    display: grid;
+    grid-auto-flow: column;
+    align-content: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 200px;
+    margin-top: 2rem;
+
+}
+
+.Section-Icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.Section-Icon img {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  
+.Section-Icon-Title{
+    
+    margin-top: 15px;
+    font-family: "Montserrat";
+    font-size: x-large;
+    color: #ffffff;
+}
+
+.Section-Icon img:hover{
+    transform: scale(1.1);
+}

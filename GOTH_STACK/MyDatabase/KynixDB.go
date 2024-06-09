@@ -63,7 +63,7 @@ func DB_Search_and_Update(db *sql.DB, search string) (sql.Rows, bool){
 	DBSearch, _ := db.Query(QueryInput, search)
 	
 	if !DBSearch.Next(){ //Logica da Shopee
-		fmt.Println("Not Items Found, Womp Womp")
+		fmt.Println("No Items Found, Womp Womp")
 		return sql.Rows{}, false
 	} 
 
