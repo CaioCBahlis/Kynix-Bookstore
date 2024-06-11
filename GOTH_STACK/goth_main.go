@@ -2,6 +2,7 @@ package main
 
 import (
 	"GOTH_STACK/MyDatabase"
+	"GOTH_STACK/Scrappers"
 	"database/sql"
 	"fmt"
 	"html/template"
@@ -18,20 +19,45 @@ type Data struct {
 
 type Section struct{
 	Section_Title string
-	Products []MyDatabase.Product
+	Products []Scrappers.Product
 
 }
-
 
 
 var MyData Data
 var SearchData Data
 var PageSection Section
 
+func main() {
+	
+	db := MyDatabase.OpenConn()
+
+	MyData = Data{
+		Sections: [][]Section{},
+	}
+
+	SearchData = Data{
+		Sections: [][]Section{},
+	}
+
+	Generate_HUB_Row(db, "livro", "Best Seller")
+	Generate_HUB_Row(db, "Harry Potter", "Recomendacoes")
+	Generate_HUB_Row(db, "Computer", "Ficcao  Fantasia")
+	Generate_HUB_Row(db, "esgrima", "Promocao")
+	
+	
+	http.HandleFunc("/", handler)
+	http.HandleFunc("/SearchPage", SearchHandler)
+
+	staticPath := "C:/Users/User/Desktop/Code/GOTH_STACK/static"
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir(staticPath))))
+
+	http.ListenAndServe(":8222", nil)
+}
+
+
 func handler(w http.ResponseWriter, r *http.Request) {
 
-	
-	
 	tmplPath := filepath.Join("C:/Users/User/Desktop/Code/GOTH_STACK/templates", "myhtml.html", "")
 	tmpl, err := template.ParseFiles(tmplPath)
 	if err != nil {
@@ -79,43 +105,13 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 
-
-
-func main() {
-	
-	db := MyDatabase.OpenConn()
-
-	MyData = Data{
-		Sections: [][]Section{},
-	}
-
-	SearchData = Data{
-		Sections: [][]Section{},
-	}
-
-	Generate_Row(db, "livro", "Best Seller", &MyData)
-	Generate_Row(db, "esgrima", "Recomendacoes", &MyData)
-	Generate_Row(db, "Computer", "Ficcao  Fantasia", &MyData)
-	Generate_Row(db, "esgrima", "Promocao", &MyData)
-	
-	
-	http.HandleFunc("/", handler)
-	http.HandleFunc("/SearchPage", SearchHandler)
-
-	staticPath := "C:/Users/User/Desktop/Code/GOTH_STACK/static"
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir(staticPath))))
-
-	http.ListenAndServe(":8222", nil)
-}
-
-
 func Generate_Row(db *sql.DB, SearchProduct string, RowTitle string, PageDS *Data){
 
 	rows, _ := MyDatabase.DB_Search_and_Update(db, SearchProduct)
 	
 	PageSection = Section{
 		Section_Title: RowTitle,
-		Products: []MyDatabase.Product{},
+		Products: []Scrappers.Product{},
 	}
 	
 
@@ -129,7 +125,7 @@ func Generate_Row(db *sql.DB, SearchProduct string, RowTitle string, PageDS *Dat
 	var rowSections []Section
 	
 	for rows.Next(){
-		var p MyDatabase.Product
+		var p Scrappers.Product
 		err := rows.Scan(&p.Title, &p.Price, &p.Reviews, &p.Imgurl, &p.Purl, &p.Lupdate, &p.Seller)
 		if err != nil {
 			fmt.Println("Error scanning row:", err)
@@ -144,7 +140,7 @@ func Generate_Row(db *sql.DB, SearchProduct string, RowTitle string, PageDS *Dat
 
             PageSection = Section{
                 Section_Title: RowTitle,
-                Products:      []MyDatabase.Product{},
+                Products:      []Scrappers.Product{},
             }
         }
 	}
@@ -156,6 +152,37 @@ func Generate_Row(db *sql.DB, SearchProduct string, RowTitle string, PageDS *Dat
 			PageDS.Sections = append(PageDS.Sections, rowSections)
 		}	
 	}
+
+}
+
+func Generate_HUB_Row(db *sql.DB, RowTopic string, SectionTitle string){
+
+	rows, _ :=  MyDatabase.DB_Search_and_Update(db, RowTopic)
+
+	PageSection = Section{
+		Section_Title: SectionTitle,
+		Products: []Scrappers.Product{},
+	}
+
+
+	var HUBrow []Section
+
+	
+	for i := 0; i < 5; i++{
+		rows.Next()
+
+		var p Scrappers.Product
+		err := rows.Scan(&p.Title, &p.Price, &p.Reviews, &p.Imgurl, &p.Purl, &p.Lupdate, &p.Seller)
+		if err != nil{
+			fmt.Println("Error scanning values for main page")
+		}
+
+		PageSection.Products = append(PageSection.Products, p)
+	}
+
+	HUBrow = append(HUBrow, PageSection)
+
+	MyData.Sections = append(MyData.Sections, HUBrow)
 
 }
 

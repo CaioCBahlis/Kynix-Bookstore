@@ -1,24 +1,13 @@
 package MyDatabase
 
 import (
+	"GOTH_STACK/Scrappers"
 	"database/sql"
 	"fmt"
 	"time"
 	"os"
 	_ "github.com/lib/pq" 
 )
-
-type Product struct {
-	Title   string `json:"title"`
-	Price   string `json:"price"`
-	Reviews string `json:"reviews"`
-	Imgurl  string `json:"imgurl"`
-	Purl    string `json:"purl"`
-	Lupdate string `json:"lupdate"`
-	Seller  string `json:"seller "`
-}
-
-
 
 
 
@@ -41,7 +30,7 @@ func OpenConn() *sql.DB{
 
 
 
-func DBinsert(db *sql.DB, MyProduct Product) {
+func DBinsert(db *sql.DB, MyProduct Scrappers.Product) {
 
 	InsertSql := `INSERT INTO product (title, price, reviews, imgurl, purl, lupdate, seller) VALUES ($1, $2, $3, $4, $5, $6, $7)`
 
