@@ -8,6 +8,7 @@
     <title>CSS Position</title>
     <link rel="icon" href="/static/download.png">
     <link rel="stylesheet" href="/static/main.css">
+    <script src="JStyling.js"></script>
 </head>
 
 
@@ -23,7 +24,7 @@
 
             <div >
                 <form action="/SearchPage" class="search-bar" method="post">
-                    <input type="text" placeholder="Search" id="searchtext" name="searchtext">
+                    <input type="text" placeholder="Search"  autocomplete="off" id="searchtext" name="searchtext">
                     <button type="submit"> <img class= search-icon src="/static/1000_F_278600482_jMaMwEXPoMx5QYdlHN6AK5We5L9wIEJs_1_-removebg-preview.png"> </button>
                 </form>
                 </div>
@@ -52,13 +53,13 @@
             <div class="slider-container">
                 <div class="slider-content">
                     <div class="slide">
-                        <img src="/static/23437212_6795197 (1).jpg" alt="Image 1">
+                        <img src="/static/23437212_6795197.jpg" loading="eager" alt="Image 1">
                     </div>
                     <div class="slide">
-                        <img src="/static/31256455_7773487.jpg" alt="Image 2">
+                        <img src="/static/31256455_7773487.jpg" loading="eager" alt="Image 2">
                     </div>
                     <div class="slide">
-                        <img src="/static/32452243_7929097.jpg" alt="Image 2">
+                        <img src="/static/32452243_7929097.jpg" loading="eager" alt="Image 2">
                     </div>
                 </div>
             </div>
@@ -94,9 +95,9 @@
         </div>
 
         <div class="Section-Icon"> 
-            <a href="myhtml.html">
-            <img src="/static/tik-tok.png"> 
-            <p class="Section-Icon-Title"> BookTok </p> 
+            <a href="/OpenBooks">
+            <img src="/static/owl.png"> 
+            <p class="Section-Icon-Title"> OpenBooks </p> 
             </a>
         </div>
 
@@ -104,7 +105,7 @@
 
         <div class="product-hub">
             {{range .Sections}}
-                {{range .}}
+            {{range .}}
             <div class=Section-title> 
             
             {{.Section_Title}}
@@ -112,25 +113,44 @@
 
             <div class="product-carousel">
 
+                <div>  
+                    <button class=slide-button type="submit"><img class=slide-button-icon id="back-button" src="/static/removed.png"></button>
+                </div>
+
                 {{range .Products}}
                 <div class="Product-Box">
+                    <a href="{{.Purl}}"> 
                     
                     <div class="Product-Img"> <img class="product-cover" src={{.Imgurl}}> </div>
 
                     <div class="Product-Info"> {{.Title}} </div>
-                
+                    
+                    </a>
                 </div>
                 {{end}}
 
                 <div>  
-                    <button class=slide-button type="submit"><img class=slide-button-icon src="/static/removed.png"></button>
+                    <button class=slide-button type="submit"><img class=slide-button-icon id="forward-button" src="/static/removed.png"></button>
                 </div>
 
             </div>
             {{end}}
             {{end}}
         </div>
+        
+        <br><br><br>
+        <br><br><br>
+
     </div>
+
+    <footer> 
+        <h1>  Contact Us </h1>
+       
+        <div>
+
+        </div>
+        
+    </footer>
 
  </body>
 

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=LXGW+WenKai+TC&display=swap');
 
 * {
   margin: 0;
@@ -71,6 +72,11 @@ a {
   color: white;
 }
 
+.search-bar option {
+  background-color: transparent;
+}
+
+
 .search-bar button img {
   width: 2.5rem;
   height: 2.5rem;
@@ -113,6 +119,7 @@ body {
   border-radius: 50%;
 }
 
+
 .Page-Content {
   height: 80%;
   display: inline;
@@ -123,7 +130,7 @@ body {
   place-items: center;
   margin: auto;
   height: 100%;
-  width: 75%;
+  width: 100%;
 }
 
 .product-carousel {
@@ -164,6 +171,13 @@ body {
   background-color: cadetblue;
   border-radius: 0 0 10px 10px;
   padding-left: 5px;
+  color: white;
+  font-size: 0.9rem;
+  font-family: "Montserrat";
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap;
+
 }
 
 .slide-button-icon {
@@ -174,6 +188,11 @@ body {
   cursor: pointer;
   border: none;
   background: none;
+}
+
+#back-button{
+  transform: rotate(-180deg);
+
 }
 
 .slide-button {
@@ -187,9 +206,11 @@ body {
 .Section-title {
   width: 100%;
   margin-top: 2rem;
+  padding-left: 1.5rem;
   position: relative;
   font-size: 3rem;
-  font-family: "Fira Sans";
+  font-family: "Exo 2", sans-serif;
+  color: wheat
 }
 
 br {
@@ -207,15 +228,14 @@ br {
   min-width: 7rem;
   max-height: 650px;
   margin-top: 5rem;
-  border: 2%;
-  border: solid;
-  border-color: black;
+ 
   overflow: hidden;
 }
 
 .slide {
   flex: 0 0 100%;
 }
+
 
 .slide img {
   width: 100%;
@@ -275,3 +295,15 @@ br {
 .Section-Icon img:hover{
     transform: scale(1.1);
 }
+
+.product-carousel .Product-Box:hover{
+  transform: scale(1.1);
+}
+
+footer{
+  width: 100%;
+  height: 20rem;
+  background-color: #c57b03;
+  
+}
+

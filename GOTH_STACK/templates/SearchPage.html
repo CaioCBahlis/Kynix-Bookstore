@@ -44,25 +44,20 @@
     
     <div class="product-hub">
             
-        {{range .Sections}}
-            {{range .}}
-        <div class="Product-Row"> 
-
+        
+       
+        
         {{range .Products}}
-           
             <div class="Product-Box">
-                <a href="{{.Purl}}">
-                <div class="Product-Image"> <img src="{{.Imgurl}}"> </div>
-                <div class="Product-Info">
-                    <div> {{.Title}} {{.Price}}</div>
-                </div> 
-                </a>
+                <a href="">
+                    <div class="Product-Image"> 
+                        <img src="{{.Imgurl}}"> 
+                    </div>
+                    <div class="Product-Info">
+                        <div> {{.Title}} </div>
+                    </div> 
+                </a> 
             </div>
-          
-            {{end}}
-            
-        </div>
-        {{end}}
         {{end}}
     </div>
 

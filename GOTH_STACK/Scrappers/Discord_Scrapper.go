@@ -9,7 +9,7 @@ import (
 
 type Book struct{
 	Title string `json:"title"`
-	IMGURL string `json:"imgurl"`
+	Imgurl string `json:"imgurl"`
 	Link1 string  `json:"link1"`
 	Link2 string  `json:"link2"`
 	Link3 string  `json:"link3"`
@@ -47,7 +47,7 @@ func ZLibrary_Scrapper(c *colly.Collector, url string)  (ScrappedBook Book) {
 
 
 		MyBook.Title = Title
-		MyBook.IMGURL = IMGURL
+		MyBook.Imgurl = IMGURL
 		MyBook.Link1 = DOWN_URL
 		MyBook.Link2 = Mirror_Url
 		MyBook.Link3 = Mirror_Url2

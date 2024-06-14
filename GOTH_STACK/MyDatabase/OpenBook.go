@@ -30,7 +30,7 @@ func OB_Insert(db *sql.DB, MyBook *Scrappers.Book){
 
 	QUERY := "INSERT INTO openbooks (title, imgurl, link1, link2, link3, link4, lupdate) VALUES ($1, $2, $3, $4, $5, $6, $7);"
 
-	_, err := db.Exec(QUERY, MyBook.IMGURL, MyBook.IMGURL, MyBook.Link1, MyBook.Link2, MyBook.Link3, MyBook.Link4, time.Now())
+	_, err := db.Exec(QUERY, MyBook.Title, MyBook.Imgurl, MyBook.Link1, MyBook.Link2, MyBook.Link3, MyBook.Link4, time.Now())
 	if err != nil{
 		fmt.Println("error adding to the openbook database, womp womp")
 	}

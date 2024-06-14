@@ -45,10 +45,18 @@ func DBinsert(db *sql.DB, MyProduct Scrappers.Product) {
 }
 
 
-func DB_Search_and_Update(db *sql.DB, search string) (sql.Rows, bool){
+func DB_Search_and_Update(db *sql.DB, table string, search string) (sql.Rows, bool){
 	
 
-	QueryInput := "SELECT * FROM product WHERE product.title LIKE '%' || $1 || '%'"
+	var QueryInput string
+	
+	if table == "OpenBooks"{
+		QueryInput = "SELECT * FROM OpenBooks WHERE OpenBooks.title LIKE '%' || $1 || '%'"
+	}else{
+	     QueryInput = "SELECT * FROM product WHERE product.title LIKE '%' || $1 || '%'"
+	}
+
+	
 	DBSearch, _ := db.Query(QueryInput, search)
 	
 	if !DBSearch.Next(){ //Logica da Shopee
