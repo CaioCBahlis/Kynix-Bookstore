@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Position</title>
+    <link rel="icon" href="/static/download.png">
+    <link rel="stylesheet" href="/static/Search.css">
+</head>
+
+<body>
+
+    <main>
+        <header>
+            <div class="Logo">
+                <a href="myhtml.html"> Kynix </a>
+            </div>
+            <div>
+                <form action="/SearchPage" class="search-bar" method="post">
+                    <input type="text" placeholder="Search" id="searchtext" name="searchtext">
+                    <button type="submit">
+                        <img class="search-icon" src="/static/1000_F_278600482_jMaMwEXPoMx5QYdlHN6AK5We5L9wIEJs_1_-removebg-preview.png">
+                    </button>
+                </form>
+            </div>
+            <div class="profileBorder">
+                <img class="user-icon" src="/static/download.png">
+            </div>
+        </header>
+        <hr>
+    </main>
+
+    <div class="product-hub">
+        {{range .Products}}
+                <div class="Product-Box">
+                    <a href="{{.Purl}}">
+
+                    <div class="Product-Image">
+                        <img src="{{.Imgurl}}">
+                    </div>
+
+                    <div class="Product-Info">
+                        <div>{{.Title}}</div>
+                    </div>
+
+                    </a>
+                </div>
+        {{end}}
+    </div>
+
+</body>
+
+</html>
