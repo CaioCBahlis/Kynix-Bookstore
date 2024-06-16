@@ -22,8 +22,8 @@
            </div>
 
            <div >
-               <form action="/SearchPage" class="search-bar" method="post">
-                   <input type="text" placeholder="Search"  autocomplete="off" id="searchtext" name="searchtext">
+               <form action="/OpenSearchHandler" class="search-bar" method="post">
+                   <input type="text" placeholder="Search"  autocomplete="off" id="searchtext" name="OpenCategories">
                    <button type="submit"> <img class= search-icon src="/static/1000_F_278600482_jMaMwEXPoMx5QYdlHN6AK5We5L9wIEJs_1_-removebg-preview.png"> </button>
                </form>
                </div>
@@ -80,8 +80,7 @@
         <div class="Categories">
 
             <form action="/OpenSearchHandler"  method="post"> 
-                <input type="hidden" value="Physics,Gravity"
-                name="OpenCategories">
+                <input type="hidden" value="Physics,Gravity" name="OpenCategories">
                 <button class=Submit-Categories type="submit">
                     <div class="Category-Box"> 
                         <img src="/static/Physics.png">

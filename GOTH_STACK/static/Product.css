@@ -104,39 +104,45 @@ hr {
   background-color: rgb(238, 238, 238);
 }
 
-.product-hub {
-  margin-top: 10rem;
+
+.Product-Window{
+  display: grid;
+  flex-direction: column;
   width: 100%;
-  padding: 1rem;
+  height: 100%;
+}
+
+
+.Product-Image{
+  width: 100%;
+  margin-top: 4rem;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.Product-Box {
-  background-color: #14213d;
-  padding: 1rem;
-  width: 200px;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-.Product-Image img {
-  max-width: 100%;
   height: auto;
 }
 
-.Product-Info {
-  height: 50px;
-  width: 100%;
-  color: #fff;
-  margin-top: 0.5rem;
+.Product-Info{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    color: white;
+    font-size: large;
+} 
+
+.Product-Download{
+  display: flex;
+  margin-right: 3rem;
+  justify-content: center;
+  align-items: start;
 }
 
-.Product-Submit {
-  border: none;
-  background: none;
-  cursor: pointer;
+
+.Button-Download{
+  width: 100px;
+  height: 50px;
+  background-color:#fca311;
+  border-radius: 10%;
+  margin-left: 4rem;
 }

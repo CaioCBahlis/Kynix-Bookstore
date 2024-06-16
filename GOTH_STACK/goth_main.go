@@ -47,28 +47,30 @@ func main() {
 
 	staticPath := "C:/Users/User/Desktop/Code/GOTH_STACK/static"
 
+	
 	http.HandleFunc("/", handler)
 	http.HandleFunc("/SearchPage", SearchHandler)
 	http.HandleFunc("/OpenBooks", OpenBooks)
 	http.HandleFunc("/OpenSearchHandler", OpenSearchHandler)
+	http.HandleFunc("/ProductDownload", ProductHandler)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir(staticPath))))
-
+	
 
 	
 	
-	http.ListenAndServe(":8222", nil)
+	http.ListenAndServe(":8322", nil)
 	
 }
 
 
 func handler(w http.ResponseWriter, r *http.Request) {
 
-	fmt.Println("Handling")
+	
 	MyData = Data{}
 	db := MyDatabase.OpenConn()
 	//Top 10 maiores BottleNecks dos Animes
 	//Usar Singleton
-	fmt.Println("Generating Hub")
+	
 
 	Generate_HUB_Row(db, "Harry Potter", "Best Sellers", &MyData)
 	Generate_HUB_Row(db, "Harry Potter", "Recommended", &MyData)
@@ -81,9 +83,9 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error parsing template: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
-	fmt.Println("Executed")
+	
 	err = tmpl.Execute(w, MyData)
-	fmt.Println("Executed complete")
+	
 	if err != nil {
 		http.Error(w, "Error executing template: "+err.Error(), http.StatusInternalServerError)
 		return
@@ -102,25 +104,19 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 		r.ParseForm()
 		searchQuery := r.FormValue("searchtext")
 
-
-		
 		
 		Generate_Row(db, searchQuery, "Secao1", "Product")
+
 		}else{
 			fmt.Println("No Pages Found")
 		}
 
-		
-		
-		
-
-		tmplPath := filepath.Join("C:/Users/User/Desktop/Code/GOTH_STACK/templates", "SearchPage.html", "")
+		tmplPath := filepath.Join("C:/Users/User/Desktop/Code/GOTH_STACK/templates", "SearchStore.html", "")
 		tmpl, err := template.ParseFiles(tmplPath)
 		if err != nil {
 			http.Error(w, "Error parsing template: "+err.Error(), http.StatusInternalServerError)
 			return
 		}
-
 
 		err = tmpl.Execute(w, SearchData)
 		if err != nil {
@@ -134,9 +130,6 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 
 func OpenBooks(w http.ResponseWriter, r *http.Request){
 
-	
-
-		
 		db := MyDatabase.OBConn()
 		Generate_HUB_Row(db, "Rust", "Rusted", &OpenBooksData)
 			
@@ -164,8 +157,6 @@ func OpenSearchHandler(w http.ResponseWriter, r *http.Request){
 	if r.Method == http.MethodPost{
 		p := r.FormValue("OpenCategories")
 		KeyWords := strings.Split(p, ",")
-		fmt.Println(KeyWords)
-		fmt.Println(KeyWords[0])
 		Content := Generate_Open_Categories(db, KeyWords, "OpenBooks")
 		
 
@@ -180,25 +171,39 @@ func OpenSearchHandler(w http.ResponseWriter, r *http.Request){
 		MyExhibition.Section_Title = MyExhibition.Products[0].Title
 
 
-		fmt.Println("PRODUCTSPRODUCTSPRODUCTS", MyExhibition.Products)
+	
 		tmpl.Execute(w, MyExhibition)
 	}
+}
+
+func ProductHandler(w http.ResponseWriter, r *http.Request){
+
+	db := MyDatabase.OBConn()
+	ObjectTitle := r.FormValue("ProductObject")
+	var SearchedBook Scrappers.Book
+	
+	
+
+	rows, _ := MyDatabase.DB_Search_and_Update(db, "OpenBooks", ObjectTitle)
+	
+	rows.Scan(&SearchedBook.Title, &SearchedBook.Imgurl, &SearchedBook.Link1, &SearchedBook.Link2, &SearchedBook.Link3, &SearchedBook.Link4, &SearchedBook.Link5, &SearchedBook.Link6, &SearchedBook.Link7, time.Now())
+	
+	tmplPath := filepath.Join("C:/Users/User/Desktop/Code/GOTH_STACK/templates", "ProductPage.html", "")
+	tmpl, _ := template.ParseFiles(tmplPath)
+	tmpl.Execute(w,SearchedBook)
 }
 
 
 func Generate_Open_Categories(db *sql.DB, KeyWords []string, table string) map[Scrappers.Book]bool{
 
-
-
-	
 	Content := make(map[Scrappers.Book]bool)
 	
 	for _, value := range(KeyWords){
-		fmt.Println(value)
+	
 		rows, _ := MyDatabase.DB_Search_and_Update(db, table, value)
 		for rows.Next(){
 			MyBook := Scrappers.Book{}
-			rows.Scan(&MyBook.Title, &MyBook.Imgurl, &MyBook.Link1, &MyBook.Link2, &MyBook.Link3, &MyBook.Link4, time.Now())
+			rows.Scan(&MyBook.Title, &MyBook.Imgurl, &MyBook.Link1, &MyBook.Link2, &MyBook.Link3, &MyBook.Link4, &MyBook.Link5, &MyBook.Link6, &MyBook.Link7, time.Now())
 			if !Content[MyBook]{
 				Content[MyBook] = true
 			}			
@@ -209,12 +214,7 @@ func Generate_Open_Categories(db *sql.DB, KeyWords []string, table string) map[S
 
 }
 
-
-
-	
-
 func Generate_Row(db *sql.DB, SearchProduct string, RowTitle string, table string){
-
 
 	
 	rows, _ := MyDatabase.DB_Search_and_Update(db, table, SearchProduct)
@@ -223,23 +223,20 @@ func Generate_Row(db *sql.DB, SearchProduct string, RowTitle string, table strin
 	for rows.Next(){
 		var p Scrappers.Product
 		err := rows.Scan(&p.Title, &p.Price, &p.Reviews, &p.Imgurl, &p.Purl, &p.Lupdate, &p.Seller)
-
 		if err != nil {
 			fmt.Println("Error scanning row:", err)
 				continue
 		}
+	
 
 		SearchData.Products = append(SearchData.Products, p)
     }
 
-	
+
 }
 	
 
-	
-
-
-func Generate_HUB_Row(db *sql.DB, RowTopic string, SectionTitle string, PageDS *Data){
+	func Generate_HUB_Row(db *sql.DB, RowTopic string, SectionTitle string, PageDS *Data){
 
 	var table string
 	if PageDS == &OpenBooksData{

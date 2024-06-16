@@ -39,7 +39,6 @@ func DBinsert(db *sql.DB, MyProduct Scrappers.Product) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(db, InsertSql)
 	
 	
 }
@@ -56,7 +55,8 @@ func DB_Search_and_Update(db *sql.DB, table string, search string) (sql.Rows, bo
 	     QueryInput = "SELECT * FROM product WHERE product.title LIKE '%' || $1 || '%'"
 	}
 
-	
+
+	fmt.Println(QueryInput, search)
 	DBSearch, _ := db.Query(QueryInput, search)
 	
 	if !DBSearch.Next(){ //Logica da Shopee

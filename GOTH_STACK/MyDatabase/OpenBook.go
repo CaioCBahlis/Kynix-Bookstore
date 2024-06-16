@@ -28,10 +28,11 @@ func OBConn() *sql.DB{
 
 func OB_Insert(db *sql.DB, MyBook *Scrappers.Book){
 
-	QUERY := "INSERT INTO openbooks (title, imgurl, link1, link2, link3, link4, lupdate) VALUES ($1, $2, $3, $4, $5, $6, $7);"
+	QUERY := "INSERT INTO openbooks (title, imgurl, link1, link2, link3, link4, link5, link6, link7, lupdate) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);"
 
-	_, err := db.Exec(QUERY, MyBook.Title, MyBook.Imgurl, MyBook.Link1, MyBook.Link2, MyBook.Link3, MyBook.Link4, time.Now())
+	_, err := db.Exec(QUERY, MyBook.Title, MyBook.Imgurl, MyBook.Link1, MyBook.Link2, MyBook.Link3, MyBook.Link4, MyBook.Link5, MyBook.Link6, MyBook.Link7, time.Now())
 	if err != nil{
 		fmt.Println("error adding to the openbook database, womp womp")
 	}
 }
+

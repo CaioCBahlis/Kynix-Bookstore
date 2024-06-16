@@ -114,9 +114,6 @@ body {
   overflow-x: hidden;
 }
 
-
-
-
 .Page-Content {
   height: 80%;
   display: inline;
@@ -379,10 +376,16 @@ footer{
   }
   
   
-  .Section-Icon img {
+  .Section-Icon img{
       max-width: 100px;
       max-height: 100px;
     }
+
+.Submit-Categories{
+      border: none;
+      background: none;
+      cursor: pointer;
+  }
     
   .Section-Icon-Title{
       
@@ -408,14 +411,6 @@ footer{
   }
   
   
-.Submit-Categories{
-    border: none;
-    background: none;
-    cursor: pointer;
-    margin: 0;
-    padding: 0;
-
-}
 
 
 

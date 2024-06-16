@@ -14,6 +14,9 @@ type Book struct{
 	Link2 string  `json:"link2"`
 	Link3 string  `json:"link3"`
 	Link4 string  `json:"link4"`
+	Link5 string  `json:"link5"`
+	Link6 string  `json:"link6"`
+	Link7 string  `json:"link7"`
 	Lupdate time.Time `json:"lupdate"`
 }
 
@@ -30,7 +33,8 @@ func ZLibrary_Scrapper(c *colly.Collector, url string)  (ScrappedBook Book) {
 		Title := h.DOM.Find("h1").Text()
 		IMGURL, _ := IMGUrlParent.Find("img").Attr("src")
 		Down1_Parent := h.DOM.Find("div.mt-2")
-		Mirror_Parent := h.DOM.Find("div.mt-3")
+		Mirror_Parent := h.DOM.Find("div[id=mirrors]")
+
 
 		DOWN_Encoded, _ := Down1_Parent.Find("a.btn.btn-success.download_now").Attr("onclick")
 		DOWN_URL := B64_Formatting(DOWN_Encoded)
@@ -45,6 +49,13 @@ func ZLibrary_Scrapper(c *colly.Collector, url string)  (ScrappedBook Book) {
 		Mirror_Encoded3, _ := Mirror_Parent.Find("a[id=mirror3]").Attr("onclick")
 		Mirror_Url3 := B64_Formatting(Mirror_Encoded3)
 
+		Proxys := []string{}
+		h.ForEach("div.mt-3", func(i int, e *colly.HTMLElement) {
+			Proxy, _ := e.DOM.Find("a").Attr("onclick")
+			Proxy_Link := B64_Formatting(Proxy)
+			Proxys = append(Proxys, Proxy_Link)
+		})
+
 
 		MyBook.Title = Title
 		MyBook.Imgurl = IMGURL
@@ -52,10 +63,11 @@ func ZLibrary_Scrapper(c *colly.Collector, url string)  (ScrappedBook Book) {
 		MyBook.Link2 = Mirror_Url
 		MyBook.Link3 = Mirror_Url2
 		MyBook.Link4 = Mirror_Url3
+		MyBook.Link5 = Proxys[0]
+		MyBook.Link6 = Proxys[1]
+		MyBook.Link7 = Proxys[2]
 		MyBook.Lupdate = time.Now()
-
-		
-		
+	
 })
 
 
@@ -63,7 +75,6 @@ func ZLibrary_Scrapper(c *colly.Collector, url string)  (ScrappedBook Book) {
 	return MyBook
 	
 }
-
 
 func B64_Formatting(encodedb64 string) string{
 	encodedb64 = strings.TrimPrefix(encodedb64, "openLinkNewTab")

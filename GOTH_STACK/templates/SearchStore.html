@@ -18,8 +18,8 @@
                 <a href="myhtml.html"> Kynix </a>
             </div>
             <div>
-                <form action="/OpenSearchHandler" class="search-bar" method="post">
-                    <input type="text" placeholder="Search" id="searchtext" name="OpenCategories">
+                <form action="/SearchPage" class="search-bar" method="post">
+                    <input type="text" placeholder="Search" id="searchtext" name="searchtext">
                     <button type="submit">
                         <img class="search-icon" src="/static/1000_F_278600482_jMaMwEXPoMx5QYdlHN6AK5We5L9wIEJs_1_-removebg-preview.png">
                     </button>
@@ -34,19 +34,19 @@
 
     <div class="product-hub">
         {{range .Products}}
-        <form action="/ProductDownload" method="post">
-            <input type="hidden" name="ProductObject" value="{{.Title}}">
-            <button class="Product-Submit" type="submit">
                 <div class="Product-Box">
+                    <a href="{{.Purl}}">
+
                     <div class="Product-Image">
                         <img src="{{.Imgurl}}">
                     </div>
+
                     <div class="Product-Info">
                         <div>{{.Title}}</div>
                     </div>
+
+                    </a>
                 </div>
-            </button>
-        </form>
         {{end}}
     </div>
 
